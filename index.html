@@ -36,9 +36,9 @@
     <meta name="x5-page-mode" content="app">
 
     <!--<link rel="apple-touch-icon" href=".png" />-->
-    <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->    
 
-    <script type="text/javascript">(function() {
+  <script type="text/javascript">(function() {        
         var isIOS = (/iphone|ipad|ipod/i).test(window.navigator.userAgent.toLowerCase());
         if (isIOS) {
           console = {};
@@ -54,7 +54,7 @@
       }());
       
       
-      (function() {
+      (function() {        
         var mraid = window.mraid = {};
       
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -921,6 +921,8 @@
           }
         };
       }());</script>
+
+
     <style>
         html {
             -ms-touch-action: none
@@ -1085,6 +1087,7 @@
             };
             e.prototype = {
                     init: function (e) {
+                        console.log(" init sdk");
                         return this.gameBooster = e, this.gameHandler = null, this
                     },
                     startGame: function () {
@@ -6509,7 +6512,7 @@
         // window.gameSetting = {
         //     songTileSpeed : 4,
         //     isAutoPlay:false,
-        // }
+        // }        
         window.AD_SDK = new M_RAID_SDK(window.boot);
         window.SelfResize = true;
 
@@ -6525,10 +6528,10 @@
         window.onload = function () { //call this before init the game
             if (typeof mraid !== 'undefined') {
                 // Wait for the SDK to become ready
-                console.log('m_raid init');
+                console.log("state " + mraid.getState());
                 mraid.getMaxSize();
-                if (mraid.getState() === 'loading') {
-                    mraid.addEventListener('ready', onReadyCallback);
+                if (mraid.getState() === 'loading') {                    
+                    mraid.addEventListener('ready', onReadyCallback);                                        
                 } else {
                     onReadyCallback();
                 }
@@ -6555,11 +6558,11 @@
         }
 
         function onReadyCallback() {
-            //No need to listen to this event anymore
-            console.log('call ready');
+            //No need to listen to this event anymore            
             mraid.addEventListener('viewableChange', adVisibleCallback);
             // Wait for the ad to become viewable for the first time
             if (mraid.isViewable()) {
+                console.log("start game");
                 window.AD_SDK.startGame();
             }
         }
