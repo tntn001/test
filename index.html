@@ -1103,9 +1103,10 @@
                             this.startGame()
                     },
                     userClickedDownloadButton: function () {
-                        console.log("user call download"), "undefined" != typeof mraid ? (mraid.open(window
+                        mraid.open(window.CTAUrl);
+                        /*console.log("user call download"), "undefined" != typeof mraid ? (mraid.open(window
                             .CTAUrl), console.log("user call download mraid")) : (window.open(window
-                            .CTAUrl), console.log("user call download no mraid"))
+                            .CTAUrl), console.log("user call download no mraid"))*/
                     }
                 }, "undefined" != typeof exports && (exports.M_RAID_SDK = e), "undefined" != typeof global ? global
                 .M_RAID_SDK = e : "undefined" != typeof window && (window.M_RAID_SDK = e)
