@@ -4061,6 +4061,34 @@
       window.boot();
     }
   </script>
+  <script>
+    ! function () {
+        "use strict";
+        var e = function (e) {
+            this.init(e)
+        };
+        e.prototype = {
+                init: function (e) {
+                    return console.log(" init sdk"), this.gameBooster = e, this.gameHandler = null, this
+                },
+                startGame: function () {
+                    this.gameBooster && this.gameBooster()
+                },
+                setHandler: function (e) {
+                    this.gameHandler = e
+                },
+                adVisibleCallback: function (e) {
+                    console.log("isViewable " + e), void 0 !== this.gameHandler && null !== this.gameHandler ?
+                        e ? this.gameHandler.onGameResume && this.gameHandler.onGameResume() : this.gameHandler
+                        .onGamePause && this.gameHandler.onGamePause() : e && this.startGame()
+                },
+                userClickedDownloadButton: function () {
+                    mraid.open(window.CTAUrl)
+                }
+            }, "undefined" != typeof exports && (exports.M_RAID_SDK = e), "undefined" != typeof global ? global
+            .M_RAID_SDK = e : "undefined" != typeof window && (window.M_RAID_SDK = e)
+    }()
+</script>
 
 <script>
   window.AD_SDK = new M_RAID_SDK(window.boot), window.SelfResize = !0;
